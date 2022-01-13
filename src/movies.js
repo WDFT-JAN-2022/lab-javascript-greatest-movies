@@ -20,23 +20,36 @@ function howManyMovies(movies) {
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 function scoresAverage(movies) {
-  if (movies.length === 0) {
+  // if (movies.length === 0) {
+  //   return 0;
+  // }
+  // let scores = movies.map(function (movies) {
+  //   if (!movies.score) {
+  //     return 0;
+  //   } else {
+  //     return movies.score;
+  //   }
+  // });
+
+  // let sum = scores.reduce(function (score1, score2) {
+  //   return score1 + score2;
+  // });
+
+  // sum /= Math.round(scores.length);
+  // return Number(sum.toFixed(2));
+
+  if (movieArray.length) {
+    let totalScores = movieArray.reduce((prevValue, movie) => {
+      if (movie.hasOwnProperty('score') && movie.score) {
+        return movie.score + prevValue;
+      } else {
+        return prevValue;
+      }
+    }, 0);
+    return Number((totalScores / movieArray.length).toFixed(2));
+  } else {
     return 0;
   }
-  let scores = movies.map(function (movies) {
-    if (!movies.score) {
-      return 0;
-    } else {
-      return movies.score;
-    }
-  });
-
-  let sum = scores.reduce(function (score1, score2) {
-    return score1 + score2;
-  });
-
-  sum /= Math.round(scores.length);
-  return Number(sum.toFixed(2));
 }
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
